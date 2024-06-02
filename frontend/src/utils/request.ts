@@ -1,16 +1,16 @@
-const END_POINT = "http://localhost:3001/api";
+const END_POINT = "http://localhost:3001";
 
 export const request = async (
   url: string,
   payload: {
     method: string;
-    body?: Record<string, unknown>;
+    body?: Record<string, any>;
     headers?: Partial<HeadersInit>;
   },
   options?: { auth?: boolean; toast?: boolean }
 ) => {
   options = Object.assign({}, { auth: true, toast: true }, options);
-  console.log("beforeRequest", { url, payload, options });
+  // console.log("beforeRequest", { url, payload, options });
   const finalUrl = [END_POINT, url].join("");
   try {
     const res = await fetch(finalUrl, {
@@ -24,8 +24,8 @@ export const request = async (
       body: JSON.stringify(payload.body),
     });
     const response = await res.json();
-    console.log("afterRequest", { url, res });
-    Promise.resolve(response);
+    // console.log("afterRequest", { url, response });
+    return Promise.resolve(response);
   } catch (e) {
     console.error(e);
     return Promise.reject(e);
