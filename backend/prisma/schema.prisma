@@ -16,11 +16,11 @@ datasource db {
 
 model user {
   id    Int     @id @default(autoincrement())
-  name  String @unique
+  name  String @unique // 'A' or 'B'
   role  String // Sender or Receiver
+
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
-
 
   settlements settlement[]
   records record[]
@@ -29,8 +29,10 @@ model user {
 model settlement {
   id    Int     @id @default(autoincrement())
   sender_id Int
-  amount Int
-  status Int  // 0: pending 1: settled
+  amount Int // current offer by party A
+  status Int  // 0: pending 1: settled -1: disputed
+
+
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
 
@@ -42,8 +44,10 @@ model record {
   id Int @id @default(autoincrement())
   receiver_id Int
   settlement_id Int
-  amount Int
+  amount Int // current ofer by Party B
+  
   createdAt  DateTime   @default(now())
+
   settlement   settlement @relation(fields: [settlement_id], references: [id])
   user       user      @relation(fields: [receiver_id], references: [id])
 }
