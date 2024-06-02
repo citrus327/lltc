@@ -18,7 +18,6 @@ async function main() {
       role: "Receiver",
     },
   });
-  console.log({ userA, userB });
 }
 
 main()
