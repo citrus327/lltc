@@ -6,7 +6,8 @@
   "scripts": {
     "dev:frontend": "pnpm run --filter ./frontend dev",
     "dev:backend": "pnpm run --filter ./backend dev",
-    "dev": "run-p dev:* --print-label"
+    "dev": "run-p dev:* --print-label",
+    "prepare": "pnpm run --filter ./backend init"
   },
   "keywords": [],
   "author": "",
