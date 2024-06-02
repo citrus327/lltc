@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { request } from "./utils/request";
+import { PanelA } from "./components/PanelA";
+import { PanelB } from "./components/PanelB";
 
 function App() {
   useEffect(() => {
@@ -9,8 +11,10 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className="w-full h-full flex divide-x">
+      <PanelA className="flex-1 basis-1/2 bg-blue-50 h-full p-5" />
+
+      <PanelB className="flex-1 basis-1/2 bg-green-50 h-full p-5" />
     </div>
   );
 }
